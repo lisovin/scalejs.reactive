@@ -1,0 +1,9 @@
+
+*.user
+/build
+/obj
+/packages
+/scalejs.reactive.v11.suo
+/scalejs.reactive.csproj.user
+/TestResults
+/.nuget/nuget.exe

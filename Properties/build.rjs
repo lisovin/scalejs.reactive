@@ -1,0 +1,10 @@
+﻿({
+    mainConfigFile: 'test.js',	
+    include: 'scalejs.reactive',
+    exclude: [
+        'scalejs!core',
+		'rx',
+		'rx.binding',
+		'rx.time'
+    ]
+})
