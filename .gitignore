@@ -7,3 +7,8 @@
 /scalejs.reactive.csproj.user
 /TestResults
 /.nuget/nuget.exe
+/scalejs.reactive/build
+/scalejs.reactive/obj
+/scalejs.reactive/scalejs.reactive.csproj.user
+/scalejs.reactive.test/build
+/scalejs.reactive.test/obj
