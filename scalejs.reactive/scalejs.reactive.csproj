@@ -12,7 +12,7 @@
     <Content Include="Properties\build.rjs" />
     <Content Include="bootstrapper.js" />
     <Content Include="scalejs.reactive.js" />
-    <Content Include="scalejs.reactive\events.js" />
+    <Content Include="scalejs.reactive\messageBus.js" />
     <Content Include="scalejs.reactive\reactive.js" />
     <Content Include="Scripts\rx-vsdoc.js" />
     <Content Include="Scripts\rx.aggregates-vsdoc.js" />

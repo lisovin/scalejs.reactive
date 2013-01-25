@@ -1,4 +1,5 @@
 /*global define*/
 define([
-    './scalejs.reactive.test'
+    './scalejs.reactive.test',
+    './messageBus.test'
 ]);

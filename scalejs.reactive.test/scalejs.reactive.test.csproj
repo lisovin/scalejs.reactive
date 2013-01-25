@@ -29,6 +29,7 @@
     <Content Include="Scripts\scalejs.reactive-0.1.0.js" />
     <Content Include="Scripts\scalejs.reactive-0.1.0.min.js" />
     <Content Include="tests\all.tests.js" />
+    <Content Include="tests\messageBus.test.js" />
     <Content Include="tests\scalejs.reactive.test.js" />
   </ItemGroup>
   <ItemGroup>

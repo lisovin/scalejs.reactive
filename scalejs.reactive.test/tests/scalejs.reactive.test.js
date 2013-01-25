@@ -1,4 +1,4 @@
-﻿/*global define,describe,expect,it*/
+﻿/*global define,describe,expect,it,runs,waitsFor*/
 /*jslint sloppy: true*/
 /// <reference path="../Scripts/jasmine.js"/>
 define([

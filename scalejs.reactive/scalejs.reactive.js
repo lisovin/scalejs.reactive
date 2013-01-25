@@ -2,17 +2,17 @@
 define([
     'scalejs!core',
     './scalejs.reactive/reactive',
-    './scalejs.reactive/events'
+    './scalejs.reactive/messageBus'
 ], function (
     core,
     reactive,
-    events
+    messageBus
 ) {
     'use strict';
 
     var merge = core.object.merge;
 
     return {
-        reactive: merge(reactive, { events: events })
+        reactive: merge(reactive, { messageBus: messageBus })
     };
 });

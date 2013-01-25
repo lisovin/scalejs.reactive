@@ -7,7 +7,7 @@ require({
         "rx.binding":  "Scripts/rx.binding",
         "rx.time":  "Scripts/rx.time",
         "scalejs":  "Scripts/scalejs-0.1.12",
-        "scalejs.reactive":  "Scripts/scalejs.reactive-0.1.0"
+        "scalejs.reactive":  "../scalejs.reactive/build/scalejs.reactive-0.1.1"
     },
     "scalejs":  {
         "extensions":  [
