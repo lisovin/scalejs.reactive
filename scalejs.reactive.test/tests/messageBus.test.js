@@ -1,4 +1,4 @@
-﻿/*global define,describe,expect,it,runs,waitsFor,setTimeout*/
+﻿/*global define,console,describe,expect,it,runs,waitsFor,setTimeout*/
 /*jslint sloppy: true*/
 /// <reference path="../Scripts/jasmine.js"/>
 define([
@@ -12,16 +12,16 @@ define([
             expect(messageBus).toBeDefined();
         });
 
-        it('notifies when subscribed before `notify`', function () {
-            var received,
+        it('notifies when `receive` called before `notify`', function () {
+            var received = [],
                 isDone;
 
             runs(function () {
-                messageBus.subscribe('subject', function (msg) {
-                    received = msg;
+                messageBus.receive('receiveBeforeNotify', function (msg) {
+                    received.push(msg);
                 });
 
-                messageBus.notify('subject', {
+                messageBus.notify('receiveBeforeNotify', {
                     foo: 'bar'
                 });
 
@@ -31,25 +31,25 @@ define([
             });
 
             waitsFor(function () {
-                return received || isDone;
+                return isDone;
             }, 500);
 
             runs(function () {
-                expect(received).toBeDefined();
-                expect(received.foo).toBe('bar');
+                expect(received.length).toBeDefined(1);
+                expect(received[0].foo).toBe('bar');
             });
         });
 
-        it('doesn\'t notify when subscribed after `notify`', function () {
+        it('doesn\'t notify when `receive` called after `notify`', function () {
             var received,
                 isDone;
 
             runs(function () {
-                messageBus.notify('subject', {
+                messageBus.notify('receiveAfterNotify', {
                     foo: 'bar'
                 });
 
-                messageBus.subscribe('subject', function (msg) {
+                messageBus.receive('receiveAfterNotify', function (msg) {
                     received = msg;
                 });
 
@@ -68,16 +68,16 @@ define([
         });
 
         it('returns a message when `get` is called after `set`', function () {
-            var received,
+            var received = [],
                 isDone;
 
             runs(function () {
-                messageBus.set('subject', {
+                messageBus.set('getAfterSet', {
                     foo: 'bar'
                 });
 
-                messageBus.get('subject', function (msg) {
-                    received = msg;
+                messageBus.get('getAfterSet', function (msg) {
+                    received.push(msg);
                 });
 
                 setTimeout(function () {
@@ -90,9 +90,42 @@ define([
             }, 500);
 
             runs(function () {
-                expect(received).toBeDefined();
-                expect(received.foo).toBe('bar');
+                expect(received.length).toBe(1);
+                expect(received[0]).toBeDefined();
+                expect(received[0].foo).toBe('bar');
             });
         });
+
+        it('returns undefined first and then a message when `get` is called before `set`', function () {
+            var received = [],
+                isDone;
+
+            runs(function () {
+                messageBus.get('nullThenMessage', function (msg) {
+                    received.push(msg);
+                });
+
+                messageBus.set('nullThenMessage', {
+                    foo: 'bar'
+                });
+
+                setTimeout(function () {
+                    isDone = true;
+                }, 500);
+            });
+
+            waitsFor(function () {
+                return isDone;
+            }, 500);
+
+            runs(function () {
+                expect(received.length).toBe(2);
+                console.log('---->' + core.json.toJson(received));
+                expect(received[0]).toBeUndefined();
+                expect(received[1]).toBeDefined();
+                expect(received[1].foo).toBe('bar');
+            });
+        });
+
     });
 });

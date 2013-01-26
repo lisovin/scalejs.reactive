@@ -14,7 +14,7 @@ define([
         behaviorSubjects = {};
 
     function ensureSubject(subject) {
-        if (!has(subjects, 'subject')) {
+        if (!has(subjects, subject)) {
             subjects[subject] = new rx.Subject();
         }
 
@@ -22,7 +22,7 @@ define([
     }
 
     function ensureBehaviorSubject(subject) {
-        if (!has(behaviorSubjects, 'subject')) {
+        if (!has(behaviorSubjects, subject)) {
             behaviorSubjects[subject] = new rx.BehaviorSubject();
         }
 
@@ -33,16 +33,34 @@ define([
         return subject.asObservable();
     } */
 
-    function notify(subject, event) {
+    function notify(subject, message) {
         var rxSubject = ensureSubject(subject);
 
-        rxSubject.onNext(event);
+        rxSubject.onNext(message);
     }
 
-    function subscribe(subject, receiver) {
+    function receive(subject, filterOrReceiver, receiver) {
         var rxSubject = ensureSubject(subject);
 
-        return rxSubject.subscribe(receiver);
+        if (arguments.length === 1) {
+            return rxSubject.asObservable();
+        }
+
+        if (arguments.length === 2) {
+            return rxSubject.subscribe(filterOrReceiver);
+        }
+
+        if (arguments.length === 3) {
+            return rxSubject
+                .where(filterOrReceiver)
+                .subscribe(receiver);
+        }
+
+        throw {
+            name: 'Illegal Argument',
+            message: arguments.length + ' arguments have been provided. ' +
+                     'Valid arguments are subject (required), filter (optional), and receiver (optional).'
+        };
     }
 
     function set(subject, message) {
@@ -50,15 +68,33 @@ define([
         behaviorSubject.onNext(message);
     }
 
-    function get(subject, receiver) {
+    function get(subject, filterOrReceiver, receiver) {
         var behaviorSubject = ensureBehaviorSubject(subject);
 
-        return behaviorSubject.subscribe(receiver);
+        if (arguments.length === 1) {
+            return behaviorSubject.asObservable();
+        }
+
+        if (arguments.length === 2) {
+            return behaviorSubject.subscribe(filterOrReceiver);
+        }
+
+        if (arguments.length === 3) {
+            return behaviorSubject
+                .where(filterOrReceiver)
+                .subscribe(receiver);
+        }
+
+        throw {
+            name: 'Illegal Argument',
+            message: arguments.length + ' arguments have been provided. ' +
+                     'Valid arguments are subject (required), filter (optional), and receiver (optional).'
+        };
     }
 
     return {
         notify: notify,
-        subscribe: subscribe,
+        receive: receive,
         set: set,
         get: get
     };
