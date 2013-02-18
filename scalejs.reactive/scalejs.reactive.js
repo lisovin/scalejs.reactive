@@ -12,7 +12,7 @@ define([
 
     var merge = core.object.merge;
 
-    return {
+    core.registerExtension({
         reactive: merge(reactive, { messageBus: messageBus })
-    };
+    });
 });
