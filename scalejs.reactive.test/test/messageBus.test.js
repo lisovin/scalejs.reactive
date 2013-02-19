@@ -120,7 +120,6 @@ define([
 
             runs(function () {
                 expect(received.length).toBe(2);
-                console.log('---->' + core.json.toJson(received));
                 expect(received[0]).toBeUndefined();
                 expect(received[1]).toBeDefined();
                 expect(received[1].foo).toBe('bar');

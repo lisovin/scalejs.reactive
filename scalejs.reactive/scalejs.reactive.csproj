@@ -10,7 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Properties\build.rjs" />
-    <Content Include="bootstrapper.js" />
+    <Content Include="config.js" />
     <Content Include="scalejs.reactive.js" />
     <Content Include="scalejs.reactive\messageBus.js" />
     <Content Include="scalejs.reactive\reactive.js" />
