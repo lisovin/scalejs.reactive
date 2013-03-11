@@ -2,9 +2,6 @@
     mainConfigFile: '../config.js',	
     include: 'scalejs.reactive',
     exclude: [
-        'scalejs!core',
-		'rx',
-		'rx.binding',
-		'rx.time'
+        'scalejs!core'
     ]
 })

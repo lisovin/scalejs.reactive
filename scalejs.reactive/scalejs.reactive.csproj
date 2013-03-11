@@ -47,7 +47,9 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\scalejs.reactive.nuspec" />
+    <None Include="Properties\scalejs.reactive.nuspec">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

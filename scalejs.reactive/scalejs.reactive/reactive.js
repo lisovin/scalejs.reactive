@@ -3,7 +3,8 @@ define([
     'require',
     'rx',
     'rx.binding',
-    'rx.time'
+    'rx.time',
+    'rx.experimental'
 ], function (
     require,
     rx
