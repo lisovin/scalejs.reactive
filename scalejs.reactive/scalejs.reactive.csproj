@@ -32,6 +32,7 @@
     <Content Include="Scripts\rx.joinpatterns.js" />
     <Content Include="Scripts\rx.joinpatterns.min.js" />
     <Content Include="Scripts\rx.js" />
+    <Content Include="Scripts\rx.modern.js" />
     <Content Include="Scripts\rx.testing-vsdoc.js" />
     <Content Include="Scripts\rx.testing.js" />
     <Content Include="Scripts\rx.testing.min.js" />
@@ -40,6 +41,7 @@
     <Content Include="Scripts\scalejs-0.3.0.1.js" />
     <Content Include="Scripts\scalejs-0.3.0.1.min.js" />
     <Content Include="Scripts\x.min.js" />
+    <Content Include="Scripts\x.modern.min.js" />
     <Content Include="Scripts\_scalejs.intellisense.js" />
     <Content Include="tools\install.ps1" />
     <Content Include="tools\uninstall.ps1" />
